@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  produto-db:
+    image: mongo:latest
+    container_name: "produto-db"
+    ports:
+      - 27017:27017
+    command: --smallfiles
+  produto:
+    image: produto
+    ports:
+      - 8080:8080
+    build: .
+    links:
+      - api-database
